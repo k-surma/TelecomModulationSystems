@@ -1,7 +1,7 @@
 import numpy as np
 
-def bpsk_modulation(bits):
-    return 2 * bits - 1
+# def bpsk_modulation(bits):
+#     return 2 * bits - 1
 
 def qpsk_modulation(bits):
     """
