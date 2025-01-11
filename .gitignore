@@ -1,0 +1,24 @@
+# Pliki systemowe
+__pycache__/
+*.pyc
+
+# Wirtualne środowiska
+venv/
+env/
+
+# Wyniki projektu
+results/
+results/plots/
+
+# Pliki tymczasowe i logi
+*.log
+*.tmp
+*.bak
+.DS_Store
+
+# Konfiguracje edytorów (opcjonalne)
+.vscode/
+.idea/
+
+# Ignorowanie innych danych tymczasowych
+*.swp
