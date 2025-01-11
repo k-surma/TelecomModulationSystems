@@ -1,12 +1,16 @@
 import numpy as np
 
-def generate_prbs(length, polynomial=[5, 2], seed=1):
+def generate_prbs(length, polynomial=None, seed=1):
     """
     Generuje sekwencję PRBS przy użyciu rejestrów przesuwających.
     """
-    register = [int(x) for x in f"{seed:05b}"]
-    prbs = []
+    if polynomial is None:
+        polynomial = [5, 2]
 
+    max_index = max(polynomial)
+    register = [int(x) for x in f"{seed:0{max_index}b}"]  # Dopasowanie do długości wielomianu
+
+    prbs = []
     for _ in range(length):
         output = register[-1]
         feedback = np.bitwise_xor.reduce([register[i - 1] for i in polynomial])
