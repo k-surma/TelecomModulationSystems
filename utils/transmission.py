@@ -1,11 +1,10 @@
 from utils.channel import add_awgn_noise
 
-
 def simulate_transmission(modulation_func, bits, snr_db):
     """
-    Symuluje transmisję danych przez kanał z szumem.
+    Symuluje transmisję danych przez kanał z szumem AWGN.
 
-    :param modulation_func: Funkcja modulacji (np. BPSK, QPSK, 16-QAM).
+    :param modulation_func: Funkcja modulacji (np. BPSK, QPSK).
     :param bits: Dane wejściowe (ciąg bitów).
     :param snr_db: Wartość SNR w dB.
     :return: Zaszumiony sygnał po modulacji.

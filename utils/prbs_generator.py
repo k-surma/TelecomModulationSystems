@@ -8,7 +8,8 @@ def generate_prbs(length, polynomial=None, seed=1):
         polynomial = [5, 2]
 
     max_index = max(polynomial)
-    register = [int(x) for x in f"{seed:0{max_index}b}"]  # Dopasowanie do długości wielomianu
+    # Inicjujemy rejestr na podstawie wartości 'seed'
+    register = [int(x) for x in f"{seed:0{max_index}b}"]
 
     prbs = []
     for _ in range(length):
