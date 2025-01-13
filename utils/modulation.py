@@ -2,13 +2,13 @@ import numpy as np
 
 def bpsk_modulation(bits):
     """
-    Modulacja BPSK: bity {0,1} mapowane na symbole {-1, +1}.
+    Modulacja BPSK: bity 0,1 mapowane na symbole -1, +1
     """
     return 2 * bits - 1
 
 def qpsk_modulation(bits):
     """
-    Modulacja QPSK: Grupowanie bitów po 2 i przypisanie faz.
+    modulacja QPSK: grupowanie bitów po 2 i przypisanie faz
     (0,0) ->  1 + j
     (0,1) -> -1 + j
     (1,0) ->  1 - j
@@ -24,4 +24,5 @@ def qpsk_modulation(bits):
         (1, 0): complex(1, -1),
         (1, 1): complex(-1, -1)
     }
-    return np.array([mapping[tuple(pair)] for pair in bits])
+    return np.array([mapping[tuple(pair)] for pair in bits])    # dla kadej pary bitów
+    # funkcja przypisuje odpowiedni symbol z mapowania i tworzy nową tablicę symboli QPSK
