@@ -1,12 +1,12 @@
 # Symulacja optymalnej modulacji w systemach telekomunikacyjnych z użyciem PRBS i sieci neuronowych
 
 ## Opis
-Projekt symuluje transmisję danych w telekomunikacji z użyciem trzech technik modulacji: **BPSK**, **QPSK** oraz **16-QAM**. Analizuje jakość transmisji, obliczając wskaźnik **BER** (Bit Error Rate) w różnych warunkach zakłóceń (**SNR** - Signal-to-Noise Ratio). Projekt wykorzystuje sieci neuronowe TensorFlow/Keras do przewidywania optymalnej techniki modulacji na podstawie parametrów kanału transmisyjnego.
+Projekt symuluje transmisję danych w telekomunikacji z użyciem dwóch technik modulacji: **BPSK** oraz **QPSK**. Analizuje jakość transmisji, obliczając wskaźnik **BER** (Bit Error Rate) w różnych warunkach zakłóceń (**SNR** - Signal-to-Noise Ratio). Projekt wykorzystuje sieci neuronowe TensorFlow/Keras do przewidywania optymalnej techniki modulacji na podstawie parametrów kanału transmisyjnego.
 
-Projekt jest modularny i zawiera następujące komponenty:
+Główne elementy projektu:
 1. **Generowanie PRBS**: Sekwencje pseudolosowe jako dane wejściowe.
 2. **Modelowanie kanału transmisyjnego**: Dodanie szumu AWGN.
-3. **Implementacja technik modulacji**: BPSK, QPSK, 16-QAM.
+3. **Implementacja technik modulacji**: BPSK oraz QPSK.
 4. **Symulacja transmisji**: Przesyłanie danych zmodulowanych przez kanał z zakłóceniami.
 5. **Uczenie maszynowe**: Sieć neuronowa do analizy parametrów transmisji i wyboru optymalnej modulacji.
 
@@ -33,8 +33,7 @@ Projekt jest modularny i zawiera następujące komponenty:
     python main.py
     ```
 2. **Sprawdź wyniki:**
-Wygenerowane wykresy jakości transmisji znajdziesz w katalogu 
-`results/plots/`
+Po uruchomieniu projektu w folderze `results/plots/` pojawią się wykresy BER i przepływności (throughput) dla każdej modulacji, a w konsoli wyświetlą się informacje o najlepszej modulacji przy różnych wartościach SNR.
 
 
 ## Struktura projektu
