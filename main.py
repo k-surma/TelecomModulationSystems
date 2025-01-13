@@ -69,18 +69,6 @@ def main():
         thr_qpsk = norm*qpsk_bits_per_symbol * (1.0 - ber_qpsk)
         throughput_results["QPSK"].append(thr_qpsk)
 
-    # rysowanie BER
-    plt.figure(figsize=(7, 5))
-    for mod_type in ["BPSK", "QPSK"]:
-        plt.semilogy(snr_values, ber_results[mod_type], marker='o', label=mod_type)
-    plt.xlabel("SNR (dB)")
-    plt.ylabel("BER (log10 scale)")
-    plt.title("Porównanie BER: BPSK vs. QPSK")
-    plt.grid(True)
-    plt.legend()
-    os.makedirs("results/plots", exist_ok=True)
-    print("Zapisano wykres BER w: results/plots/ber_bpsk_qpsk.png")
-
     # rysowanie Throughput
     plt.figure(figsize=(7, 5))
     for mod_type in ["BPSK", "QPSK"]:
