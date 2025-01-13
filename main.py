@@ -79,7 +79,6 @@ def main():
     plt.grid(True)
     plt.legend()
     os.makedirs("results/plots", exist_ok=True)
-    plt.savefig("results/plots/ber_bpsk_qpsk.png")
     print("Zapisano wykres BER w: results/plots/ber_bpsk_qpsk.png")
 
     # rysowanie Throughput
