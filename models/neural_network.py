@@ -5,7 +5,6 @@ from tensorflow.keras.layers import Dense, Dropout
 def create_classification_network(input_dim):
     """
     tworzy model klasyfikacyjny dla 2 klas: BPSK i QPSK
-
     MLP (Multilayer Perceptron) / „Fully-connected network” – to sieć, gdzie każda warstwa jest gęsto połączona (Dense)
     """
     model = Sequential([
@@ -16,7 +15,10 @@ def create_classification_network(input_dim):
         Dense(2, activation='softmax')  # output layer - BPSK (id 0) i QPSK (id 1), softmax zwraca prawdopodob. przynalezności do klas
     ])
     model.compile(optimizer='adam', loss='sparse_categorical_crossentropy', metrics=['accuracy'])
+    #               akt. wag sieci    prawidlososc przewidywan              monitoruje dokladnosc
     return model
+
+
 
 # NOTATKI
 

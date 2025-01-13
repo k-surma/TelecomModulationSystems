@@ -17,7 +17,7 @@ def main():
     snr_values = [3, 6, 9, 12, 15, 18, 21, 24, 27, 30]
 
     # generujemy dłuższą sekwencję bitów, by rzadziej mieć idealne 0 błędów
-    prbs_length = 20_000
+    prbs_length = 50_000
     prbs = generate_prbs(prbs_length)
 
     np.savetxt("prbs_sequence.txt", prbs)
@@ -38,17 +38,17 @@ def main():
             snr_db=snr_db
         )
         # detekcja BPSK
-        received_bits = (noisy_signal.real > 0).astype(int)
+        received_bits = (noisy_signal.real > 0).astype(int) # demodulacja - zamiana otrzymanego sygnalu z powrotem na ciag bitow
         ber_bpsk = calculate_ber(prbs, received_bits)
         ber_results["BPSK"].append(ber_bpsk)
 
-        # Throughput
+        # Throughput - przepływność - ilosc poprawnie otrzymanych bitów na symbol transmisyjny
         thr_bpsk = bpsk_bits_per_symbol * (1.0 - ber_bpsk)
         throughput_results["BPSK"].append(thr_bpsk)
 
     # symulacja QPSK
     # QPSK wymaga wielokrotności 2 bitów
-    qpsk_bits = prbs[: (len(prbs) // 2) * 2]
+    qpsk_bits = prbs[: (len(prbs) // 2) * 2] # zapobieganie sytuacji w ktr ciąg nie jest wielokrotnością 2 i usuniecie w razie czego ostatniego bitu
     for snr_db in snr_values:
         noisy_signal = simulate_transmission(
             modulation_func=qpsk_modulation,
@@ -64,7 +64,8 @@ def main():
         ber_qpsk = calculate_ber(qpsk_bits, received_bits)
         ber_results["QPSK"].append(ber_qpsk)
 
-        norm = 0.95 if snr_db<12 else 1.0
+        # kara implementacyjna w celach eksperymentalnych
+        norm = 0.93 if snr_db<12 else 1.0
         thr_qpsk = norm*qpsk_bits_per_symbol * (1.0 - ber_qpsk)
         throughput_results["QPSK"].append(thr_qpsk)
 
